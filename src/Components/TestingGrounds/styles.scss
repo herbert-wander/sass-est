@@ -1,0 +1,116 @@
+$test-Color: rgb(236, 222, 26);
+$test_Color: rgb(61, 236, 26);
+@use "/src/PartialStyles/defaultColors" as dfColors;
+@mixin mixinTest($color:rgb(4, 0, 255))
+{
+  background-color: rgba(0, 255, 255, 0.11);
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid $color;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.TestingGrounds
+{
+  margin: 0;
+  display: flex;
+  place-items: center;
+  flex-flow: column;
+  h1
+  {
+    color: aqua;
+    @include mixinTest();
+  }
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+  }
+  .logo:hover {
+    //$test-Color: rgb(132, 45, 167) ;//!global;
+    filter: drop-shadow(0 0 2em $test-Color);
+  }
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em dfColors.$primary);
+  }
+
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+      animation: logo-spin infinite 20s linear;
+    }
+  }
+
+  .card 
+  {
+    padding: 2em;
+    h1
+    {
+      font-size: 2.5em;
+      color: rgb(183, 0, 255);
+      &:hover
+      {
+        filter: drop-shadow(0 0 0.2em dfColors.$secondary);
+        cursor: pointer;
+      }
+      @include mixinTest(rgb(255, 0, 140));
+    }
+  }
+
+  .read-the-docs {
+    color: $test-Color;
+  }
+  a 
+  {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+  }
+  a:hover {
+    color: #535bf2;
+  }
+
+  h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+  }
+  a:hover {
+    color: #535bf2;
+  }
+
+  h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+  }
+  button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a20;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  button:hover {
+  border-color: #646cff;
+  }
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
