@@ -1,4 +1,5 @@
-$testColor: rgb(132, 45, 167);
+$test-Color: rgb(236, 222, 26);
+$test_Color: rgb(61, 236, 26);
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -12,11 +13,11 @@ $testColor: rgb(132, 45, 167);
   will-change: filter;
 }
 .logo:hover {
-  $testColor: rgb(132, 45, 167);
-  filter: drop-shadow(0 0 2em $testColor);
+  $test-Color: rgb(132, 45, 167) ;//!global;
+  filter: drop-shadow(0 0 2em $test-Color);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em $testColor);
+  filter: drop-shadow(0 0 2em $test-Color);
 }
 
 @keyframes logo-spin {
@@ -39,5 +40,5 @@ $testColor: rgb(132, 45, 167);
 }
 
 .read-the-docs {
-  color: $testColor;
+  color: $test-Color;
 }
