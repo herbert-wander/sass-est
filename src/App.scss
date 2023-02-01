@@ -6,7 +6,10 @@ $test_Color: rgb(61, 236, 26);
   padding: 2rem;
   text-align: center;
 }
-
+h1
+{
+  color: aqua;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -35,8 +38,14 @@ $test_Color: rgb(61, 236, 26);
   }
 }
 
-.card {
+.card 
+{
   padding: 2em;
+  h1
+  {
+    font-size: 2.5em;
+    color: rgb(183, 0, 255);
+  }
 }
 
 .read-the-docs {
