@@ -1,5 +1,7 @@
 $test-Color: rgb(236, 222, 26);
 $test_Color: rgb(61, 236, 26);
+@use "defaultColors" as dfColors;
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -16,11 +18,11 @@ h1
   will-change: filter;
 }
 .logo:hover {
-  $test-Color: rgb(132, 45, 167) ;//!global;
+  //$test-Color: rgb(132, 45, 167) ;//!global;
   filter: drop-shadow(0 0 2em $test-Color);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em $test-Color);
+  filter: drop-shadow(0 0 2em dfColors.$primary);
 }
 
 @keyframes logo-spin {
@@ -45,6 +47,11 @@ h1
   {
     font-size: 2.5em;
     color: rgb(183, 0, 255);
+    &:hover
+    {
+      filter: drop-shadow(0 0 0.2em dfColors.$secondary);
+      cursor: pointer;
+    }
   }
 }
 
