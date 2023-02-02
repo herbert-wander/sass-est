@@ -1,15 +1,41 @@
-.msg {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background: #888;
-  font-size: 1rem;
-  color: white;
-  padding: 1rem 1.25rem;
-  margin: 1em 0;
-  display: inline-block;
-  cursor: pointer;
+body
+{
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
+.Challenge
+{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+@mixin msg($name:"",$color:#888,$colorHover:rgb(77, 77, 77)) 
+{
+  .msg#{$name}
+  {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: $color;
+    font-size: 1rem;
+    color: white;
+    max-width: 50vw;
+    padding: 1rem 1.25rem;
+    margin: 1em 0;
+    display: inline-block;
+    cursor: pointer;
 
-.msg h1 {
-  margin: 0 0 0.2em 0;
+    &:hover
+    {
+      background-color: $colorHover;
+    }
+    .msg h1 
+    {
+      margin: 0 0 0.2em 0;
+    }
+  }
 }
+@include msg;
+@include msg("-info",rgb(87, 189, 155),rgb(52, 143, 113));
