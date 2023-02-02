@@ -1,3 +1,21 @@
+@use "sass:color";
+%msg //Just Testing
+{
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: white;
+  max-width: 50vw;
+  padding: 1rem 1.25rem;
+  margin: 1em 0;
+  display: inline-block;
+  cursor: pointer;
+
+  h1 
+  {
+    margin: 0 0 0.2em 0;
+  }
+}
 body
 {
   background-color: black;
@@ -12,30 +30,32 @@ body
   justify-content: center;
   flex-wrap: wrap;
 }
-@mixin msg($name:"",$color:#888,$colorHover:rgb(77, 77, 77)) 
+@mixin msg($name:"",$color:#888) 
 {
-  .msg#{$name}
+  @if($name != "")
   {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: $color;
-    font-size: 1rem;
-    color: white;
-    max-width: 50vw;
-    padding: 1rem 1.25rem;
-    margin: 1em 0;
-    display: inline-block;
-    cursor: pointer;
-
-    &:hover
+    .msg#{$name}
     {
-      background-color: $colorHover;
-    }
-    .msg h1 
-    {
-      margin: 0 0 0.2em 0;
+      @extend %msg;
+      background: $color;
+      &:hover
+      {
+        background-color: darken($color,20%);
+      }
     }
   }
 }
-@include msg;
-@include msg("-info",rgb(87, 189, 155),rgb(52, 143, 113));
+$msgTypesList:('-default','-info');
+/*#{$msgTypesList} */
+@for $i from 1 through length($msgTypesList)
+{
+  @if($i == 1)
+  {
+    @include msg(nth($msgTypesList,$i));
+  }
+  @else
+  {
+    @include msg(nth($msgTypesList,$i),rgb(87, 189, 155));
+  }
+}
+
